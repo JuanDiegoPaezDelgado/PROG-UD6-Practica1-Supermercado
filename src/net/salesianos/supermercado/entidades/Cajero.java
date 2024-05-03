@@ -11,4 +11,21 @@ public class Cajero {
         this.numeroCaja = numeroCaja;
         this.filaClientes = new LinkedList<>();
     }
+
+    public boolean abrirCaja(boolean estaAbierta) {
+        if (!estaAbierta) {
+            estaAbierta = true;
+            System.out.println("Caja abierta!!");
+        } else {
+            System.out.println("La caja ya esta abierta");
+        }
+
+        return estaAbierta;
+
+    }
+
+    public void agregarCliente(Cliente cliente) {
+        filaClientes.add(cliente);
+    }
+
 }
