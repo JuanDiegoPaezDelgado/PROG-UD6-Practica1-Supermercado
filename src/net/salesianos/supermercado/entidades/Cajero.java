@@ -57,5 +57,36 @@ public class Cajero {
             System.out.println("La caja esta cerrada!!!!!!!!!!");
         }
     }
+
+    public void cerrarSupermercado(Boolean estaAbierta, Cajero cajero) {
+        if (!estaAbierta) {
+            System.out.println("El supermercado ha sido cerrado.");
+            System.exit(0);
+        } else {
+            if (cajero.filaClientes.isEmpty()) {
+                System.out.println("El supermercado ha sido cerrado.");
+                System.exit(0);
+            } else {
+                System.out.println("No se puede cerrar la caja, aún hay clientes esperando.");
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        String mensaje = "|===================================\n" +
+                "|Cajero                            |\n"
+                + "|===================================\n"
+                + "|-Número de caja: " + numeroCaja + "\n"
+                + "|-Total de clientes: " + filaClientes.size() + "\n"
+                + "|-Clientes en la fila:\n";
+        for (Cliente cliente : filaClientes) {
+            mensaje += cliente.toString();
+        }
+        mensaje += "===================================\n";
+        return mensaje;
+    }
+
+
    
 }
