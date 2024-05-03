@@ -12,7 +12,7 @@ public class Cajero {
         this.filaClientes = new LinkedList<>();
     }
 
-    public boolean abrirCaja(boolean estaAbierta) {
+      public boolean abrirCaja(boolean estaAbierta) {
         if (!estaAbierta) {
             estaAbierta = true;
             System.out.println("Caja abierta!!");
@@ -26,6 +26,18 @@ public class Cajero {
 
     public void agregarCliente(Cliente cliente) {
         filaClientes.add(cliente);
+    }
+
+    public void atenderCliente(boolean estaAbierta, Cajero cajero) {
+        if (!cajero.filaClientes.isEmpty()) {
+            Cliente cliente = filaClientes.poll();
+            System.out.println("Cliente atendido: \n" + cliente.toString());
+        } else if (!estaAbierta) {
+            System.out.println("La caja esta cerrada!!!!!!!!!!");
+            return;
+        } else {
+            System.out.println("No hay clientes a los que atender.");
+        }
     }
 
 }
