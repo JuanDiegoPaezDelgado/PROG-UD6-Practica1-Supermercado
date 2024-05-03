@@ -2,6 +2,9 @@ package net.salesianos.supermercado.entidades;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Random;
+
+import net.salesianos.supermercado.utilidad.Generador;
 
 public class Cajero {
     private int numeroCaja;
@@ -40,5 +43,19 @@ public class Cajero {
         }
     }
 
+    public void hacerPasarAColar(Boolean estaAbierta, Cajero cajero) {
+        if (estaAbierta) {
+            String nombreCliente = Generador.generarNombreAleatorio();
+            Cliente cliente = new Cliente(nombreCliente);
+            int productos = new Random().nextInt(12) + 1;
+            for (int i = 0; i < productos; i++) {
+                cliente.agregarProducto(Generador.generarProductoAleatorio());
+            }
+            cajero.agregarCliente(cliente);
+            System.out.println("Nuevo cliente añadido a la cola: \n" + cliente.toString());
+        } else {
+            System.out.println("La caja esta cerrada!!!!!!!!!!");
+        }
+    }
    
 }
